@@ -1,4 +1,7 @@
-import {Bot} from "grammy";
+import "grammy-debug-edge";
+import {mongo} from "./db.mjs";
+import {Bot, session} from "grammy";
+import {MongoDBAdapter} from "@grammyjs/storage-mongodb";
 
 export const {
 
@@ -12,6 +15,13 @@ export const {
 
 // Default grammY bot instance
 export const bot = new Bot(token);
+
+bot.use(session({
+    storage: new MongoDBAdapter({
+        collection: mongo.db("Bot").collection("Sessions")
+    }),
+    initial: () => ({registered: new Date(), raffles: []}),
+}));
 
 // Sample handler for a simple echo bot
 bot.on("message:text", ctx => ctx.reply(ctx.msg.text));

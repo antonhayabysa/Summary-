@@ -11,7 +11,9 @@
     "start": "node --watch -r dotenv/config scripts/start.mjs"
   },
   "dependencies": {
+    "@grammyjs/storage-mongodb": "^2.4.1",
     "grammy": "^1.19.1",
+    "mongo-realm-web-wrapper": "^0.0.1",
     "vercel-grammy": "^0.2.1"
   },
   "devDependencies": {
