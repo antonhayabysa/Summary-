@@ -20,7 +20,6 @@ bot.use(session({
     storage: new MongoDBAdapter({
         collection: mongo.db("Bot").collection("Sessions")
     }),
-    initial: () => ({registered: new Date(), raffles: []}),
 }));
 
 // Sample handler for a simple echo bot
